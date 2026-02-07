@@ -122,10 +122,11 @@
                             <select name="type" class="form-select" required>
                                 <option value="">Select type...</option>
                                 <option value="lab">Lab Results</option>
-                                <option value="imaging">Imaging</option>
+                                <option value="mri">MRI</option>
+                                <option value="xray">X-Ray</option>
                                 <option value="prescription">Prescription</option>
                                 <option value="visit">Doctor Visit</option>
-                                <option value="immunization">Immunization</option>
+                                <option value="immunization">Vaccination</option>
                                 <option value="checkup">Checkup</option>
                                 <option value="other">Other</option>
                             </select>
@@ -133,7 +134,7 @@
 
                         <div class="form-group">
                             <label class="form-label">Healthcare Provider</label>
-                            <input type="text" name="provider" class="form-input" placeholder="e.g., City Medical Center" required>
+                            <input type="text" name="provider" class="form-input" placeholder="e.g., AIIMS Delhi" required>
                         </div>
 
                         <div class="form-group">
@@ -142,7 +143,7 @@
                                 <input type="file" id="recordFile" name="file" accept=".pdf,.jpg,.png,.dcm" required>
                                 <label for="recordFile" class="file-input-label">
                                     <span>📎</span>
-                                    <span>Choose file (PDF, Image, DICOM)</span>
+                                    <span>Choose file (PDF, Image)</span>
                                 </label>
                             </div>
                         </div>

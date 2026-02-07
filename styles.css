@@ -31,7 +31,6 @@ body {
     padding: 20px;
 }
 
-/* Header */
 header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -125,7 +124,7 @@ header {
     color: white;
 }
 
-/* Main Content */
+
 .main-grid {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -133,7 +132,7 @@ header {
     margin-bottom: 30px;
 }
 
-/* Sidebar */
+
 .sidebar {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -171,7 +170,7 @@ header {
     font-size: 20px;
 }
 
-/* Content Area */
+
 .content-area {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -217,7 +216,7 @@ header {
     font-size: 15px;
 }
 
-/* Stats Cards */
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -243,7 +242,7 @@ header {
     opacity: 0.9;
 }
 
-/* Forms */
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -303,7 +302,7 @@ header {
     background: var(--light);
 }
 
-/* Records */
+
 .record-card {
     background: white;
     border: 2px solid var(--light);
@@ -374,7 +373,6 @@ header {
     font-weight: 500;
 }
 
-/* Access Management */
 .access-item {
     background: white;
     border: 2px solid var(--light);
@@ -433,7 +431,7 @@ header {
     left: 26px;
 }
 
-/* Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -500,7 +498,7 @@ header {
     margin-top: 25px;
 }
 
-/* Notification */
+
 .notification {
     position: fixed;
     top: 20px;
@@ -566,7 +564,7 @@ header {
     font-size: 14px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .main-grid {
         grid-template-columns: 1fr;

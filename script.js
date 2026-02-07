@@ -1,4 +1,4 @@
-// State management
+
 const state = {
     connected: false,
     walletAddress: '',
@@ -9,15 +9,13 @@ const state = {
     consents: []
 };
 
-// Navigation
 function switchSection(sectionId) {
-    // Update nav items
+    
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
     });
     event.target.closest('.nav-item').classList.add('active');
 
-    // Update sections
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
@@ -26,7 +24,6 @@ function switchSection(sectionId) {
     state.currentSection = sectionId;
 }
 
-// Wallet connection
 async function connectWallet() {
     try {
         if (typeof window.ethereum !== 'undefined') {
@@ -50,7 +47,6 @@ async function connectWallet() {
     }
 }
 
-// Upload record
 function uploadRecord(event) {
     event.preventDefault();
     
@@ -62,7 +58,6 @@ function uploadRecord(event) {
         return;
     }
 
-    // Simulate blockchain upload
     const newRecord = {
         id: state.records.length + 1,
         title: formData.get('title'),
@@ -84,7 +79,6 @@ function uploadRecord(event) {
     showNotification('Record uploaded successfully to blockchain!', 'success');
 }
 
-// Grant access
 function grantAccess(event) {
     event.preventDefault();
     
@@ -109,9 +103,7 @@ function grantAccess(event) {
     showNotification('Access granted successfully!', 'success');
 }
 
-// Load sample data
 function loadSampleData() {
-    // Sample records
     state.records = [
         {
             id: 1,
@@ -148,7 +140,6 @@ function loadSampleData() {
         }
     ];
 
-    // Sample access grants
     state.accessGrants = [
         {
             id: 1,
@@ -168,7 +159,6 @@ function loadSampleData() {
         }
     ];
 
-    // Sample shared records
     state.sharedRecords = [
         {
             id: 1,
@@ -179,7 +169,6 @@ function loadSampleData() {
         }
     ];
 
-    // Sample consents
     state.consents = [
         {
             id: 1,
@@ -210,7 +199,6 @@ function updateDashboard() {
     document.getElementById('activeConsents').textContent = state.consents.filter(c => c.active).length;
     document.getElementById('dataRequests').textContent = '3'; // Mock value
 
-    // Recent activity
     const recentActivity = document.getElementById('recentActivity');
     recentActivity.innerHTML = state.records.slice(0, 3).map(record => `
         <div class="record-card">
@@ -394,7 +382,6 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// Close modal when clicking outside
 window.addEventListener('click', function(e) {
     if (e.target.classList.contains('modal')) {
         e.target.classList.remove('active');
