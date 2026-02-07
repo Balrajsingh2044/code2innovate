@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+      
         <header>
             <div class="header-content">
                 <div class="logo">
@@ -24,9 +24,9 @@
             </div>
         </header>
 
-        <!-- Main Content -->
+       
         <div class="main-grid">
-            <!-- Sidebar Navigation -->
+         
             <aside class="sidebar">
                 <ul class="nav-menu">
                     <li class="nav-item active" onclick="switchSection('dashboard')">
@@ -56,9 +56,9 @@
                 </ul>
             </aside>
 
-            <!-- Content Area -->
+           
             <main class="content-area">
-                <!-- Dashboard Section -->
+            
                 <section id="dashboard" class="section active">
                     <div class="section-header">
                         <h2>Dashboard</h2>
@@ -90,7 +90,7 @@
                     <div id="recentActivity"></div>
                 </section>
 
-                <!-- My Records Section -->
+               
                 <section id="records" class="section">
                     <div class="section-header">
                         <h2>My Health Records</h2>
@@ -99,7 +99,7 @@
                     <div id="recordsList"></div>
                 </section>
 
-                <!-- Upload Section -->
+                
                 <section id="upload" class="section">
                     <div class="section-header">
                         <h2>Upload New Record</h2>
@@ -153,7 +153,7 @@
                     </form>
                 </section>
 
-                <!-- Access Control Section -->
+           
                 <section id="access" class="section">
                     <div class="section-header">
                         <h2>Access Control</h2>
@@ -167,7 +167,7 @@
                     <div id="accessList"></div>
                 </section>
 
-                <!-- Shared With Me Section -->
+        
                 <section id="shared" class="section">
                     <div class="section-header">
                         <h2>Shared With Me</h2>
@@ -176,7 +176,7 @@
                     <div id="sharedList"></div>
                 </section>
 
-                <!-- Consents Section -->
+      
                 <section id="consent" class="section">
                     <div class="section-header">
                         <h2>Research Consents</h2>
@@ -188,7 +188,6 @@
         </div>
     </div>
 
-    <!-- Grant Access Modal -->
     <div id="grantAccessModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -199,7 +198,7 @@
             <form onsubmit="grantAccess(event)">
                 <div class="form-group">
                     <label class="form-label">Name/Organization</label>
-                    <input type="text" name="name" class="form-input" placeholder="e.g., Dr. John Smith" required>
+                    <input type="text" name="name" class="form-input" placeholder="e.g., Dr. Hansraj Hathi" required>
                 </div>
 
                 <div class="form-group">
@@ -229,7 +228,7 @@
         </div>
     </div>
 
-    <!-- Notification -->
+
     <div id="notification" class="notification">
         <div id="notificationIcon" class="notification-icon"></div>
         <div id="notificationText" class="notification-text"></div>
