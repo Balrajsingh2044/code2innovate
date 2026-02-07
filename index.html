@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthChain - Decentralized Health Records</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🏥</div>
+                    <h1>HealthChain</h1>
+                </div>
+                <div class="wallet-section">
+                    <div id="walletAddress" class="wallet-address"></div>
+                    <button id="connectBtn" class="btn btn-primary" onclick="connectWallet()">
+                        Connect Wallet
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item active" onclick="switchSection('dashboard')">
+                        <span class="nav-icon">📊</span>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" onclick="switchSection('records')">
+                        <span class="nav-icon">📄</span>
+                        <span>My Records</span>
+                    </li>
+                    <li class="nav-item" onclick="switchSection('upload')">
+                        <span class="nav-icon">⬆️</span>
+                        <span>Upload</span>
+                    </li>
+                    <li class="nav-item" onclick="switchSection('access')">
+                        <span class="nav-icon">🔑</span>
+                        <span>Access Control</span>
+                    </li>
+                    <li class="nav-item" onclick="switchSection('shared')">
+                        <span class="nav-icon">🤝</span>
+                        <span>Shared With Me</span>
+                    </li>
+                    <li class="nav-item" onclick="switchSection('consent')">
+                        <span class="nav-icon">✅</span>
+                        <span>Consents</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="section active">
+                    <div class="section-header">
+                        <h2>Dashboard</h2>
+                        <p>Overview of your health records and activities</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Records</div>
+                            <div class="stat-value" id="totalRecords">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Shared Records</div>
+                            <div class="stat-value" id="sharedRecords">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Active Consents</div>
+                            <div class="stat-value" id="activeConsents">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Data Requests</div>
+                            <div class="stat-value" id="dataRequests">0</div>
+                        </div>
+                    </div>
+
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+                    <div id="recentActivity"></div>
+                </section>
+
+                <!-- My Records Section -->
+                <section id="records" class="section">
+                    <div class="section-header">
+                        <h2>My Health Records</h2>
+                        <p>All your medical records stored securely on the blockchain</p>
+                    </div>
+                    <div id="recordsList"></div>
+                </section>
+
+                <!-- Upload Section -->
+                <section id="upload" class="section">
+                    <div class="section-header">
+                        <h2>Upload New Record</h2>
+                        <p>Add a new health record to the blockchain</p>
+                    </div>
+
+                    <form onsubmit="uploadRecord(event)">
+                        <div class="form-group">
+                            <label class="form-label">Record Title</label>
+                            <input type="text" name="title" class="form-input" placeholder="e.g., Annual Physical Exam" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea name="description" class="form-textarea" placeholder="Brief description of the record" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Record Type</label>
+                            <select name="type" class="form-select" required>
+                                <option value="">Select type...</option>
+                                <option value="lab">Lab Results</option>
+                                <option value="imaging">Imaging</option>
+                                <option value="prescription">Prescription</option>
+                                <option value="visit">Doctor Visit</option>
+                                <option value="immunization">Immunization</option>
+                                <option value="checkup">Checkup</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Healthcare Provider</label>
+                            <input type="text" name="provider" class="form-input" placeholder="e.g., City Medical Center" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Upload File</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="recordFile" name="file" accept=".pdf,.jpg,.png,.dcm" required>
+                                <label for="recordFile" class="file-input-label">
+                                    <span>📎</span>
+                                    <span>Choose file (PDF, Image, DICOM)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Upload to Blockchain
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Access Control Section -->
+                <section id="access" class="section">
+                    <div class="section-header">
+                        <h2>Access Control</h2>
+                        <p>Manage who can access your health records</p>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="showGrantAccessModal()" style="margin-bottom: 20px;">
+                        Grant New Access
+                    </button>
+
+                    <div id="accessList"></div>
+                </section>
+
+                <!-- Shared With Me Section -->
+                <section id="shared" class="section">
+                    <div class="section-header">
+                        <h2>Shared With Me</h2>
+                        <p>Records that others have shared with you</p>
+                    </div>
+                    <div id="sharedList"></div>
+                </section>
+
+                <!-- Consents Section -->
+                <section id="consent" class="section">
+                    <div class="section-header">
+                        <h2>Research Consents</h2>
+                        <p>Manage your data sharing consents for research purposes</p>
+                    </div>
+                    <div id="consentList"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Grant Access Modal -->
+    <div id="grantAccessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Grant Access</h3>
+                <button class="close-btn" onclick="closeModal('grantAccessModal')">&times;</button>
+            </div>
+
+            <form onsubmit="grantAccess(event)">
+                <div class="form-group">
+                    <label class="form-label">Name/Organization</label>
+                    <input type="text" name="name" class="form-input" placeholder="e.g., Dr. John Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Wallet Address</label>
+                    <input type="text" name="address" class="form-input" placeholder="0x..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Access Type</label>
+                    <select name="accessType" class="form-select" required>
+                        <option value="Full">Full Access</option>
+                        <option value="Limited">Limited Access</option>
+                        <option value="ReadOnly">Read Only</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Expiration Date</label>
+                    <input type="date" name="expiration" class="form-input" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('grantAccessModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Grant Access</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div id="notificationIcon" class="notification-icon"></div>
+        <div id="notificationText" class="notification-text"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
